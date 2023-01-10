@@ -22,6 +22,12 @@
     opacity: 0.4;
 }
 
+.planBoxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 @media screen and (min-width: 1024px) {
     .container {
         margin-left: 50px;
