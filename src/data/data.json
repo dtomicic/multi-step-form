@@ -3,17 +3,20 @@
         {
             "name": "Arcade",
             "monthPrice": 9,
-            "yearPrice": 90 
+            "yearPrice": 90,
+            "image": "../assets/images/icon-arcade.svg" 
         },
         {
             "name": "Advanced",
             "monthPrice": 12,
-            "yearPrice": 120 
+            "yearPrice": 120,
+            "image": "../assets/images/icon-advances.svg" 
         },
         {
             "name": "Pro",
             "monthPrice": 15,
-            "yearPrice": 150 
+            "yearPrice": 150,
+            "image": "../assets/images/icon-pro.svg" 
         }
     ],
     "addons": [
