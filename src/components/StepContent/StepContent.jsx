@@ -1,8 +1,14 @@
 import Form from "../Form/Form";
 import Navigation from "../Navigation/Navigation";
+import PlanBox from "../PlanBox/PlanBox";
 import styles from "./StepContent.module.css";
+import data from "../../data/data.json";
+import SubToggle from "../SubToggle/SubToggle";
+import React from "react";
 
 const StepContent = ({ step, setStep }) => {
+  const [active, setActive] = React.useState("Monthly");
+  const content = ["Monthly", "Yearly"];
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -36,8 +42,16 @@ const StepContent = ({ step, setStep }) => {
           </>
         ) : null}
       </div>
-      {step === 1 ? <Form /> :
-      step === 2 ? null : null}
+      {step === 1 ? (
+        <Form />
+      ) : step === 2 ? (
+        <>
+          <div className={styles.planBoxContainer}>
+            <PlanBox active={active} />
+          </div>
+          <SubToggle setActive={setActive} content={content} active={active} />
+        </>
+      ) : null}
       <Navigation step={step} setStep={setStep} />
     </div>
   );
