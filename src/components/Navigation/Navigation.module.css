@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    font-family: 'Ubuntu';
+    width: 100%;
+}
+
+.backButton {
+    visibility: hidden;
+    font-size: 14px;
+    opacity: 0.4;
+    justify-self: flex-start;
+}
+
+.backButton:hover {
+    cursor: pointer;
+}
+
+.nextButton {
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(213, 96%, 18%);
+    color: white;
+    padding: 10px 20px;
+    font-weight: 700;
+    transition: .3s ease-in-out;
+    justify-self: flex-end;
+}
+
+.nextButton:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.visible {
+    visibility: visible;
+}

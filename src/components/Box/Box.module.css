@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    background-color: hsl(231, 100%, 99%);
+    width: 90%;
+    position: absolute;
+    top: 100px;
+    border-radius: 10px;
+    max-width: 900px;
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        align-items: center;
+        min-height: 100vh;
+    }
+    .box {
+        display: flex;
+        position: static;
+        padding: 15px
+    }
+}
