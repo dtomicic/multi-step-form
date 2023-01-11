@@ -33,6 +33,7 @@
         margin-left: 50px;
         padding-bottom: 0;
         justify-content: space-between;
+        width: 70%;
     }
 
     .headerHeading {
@@ -41,5 +42,9 @@
 
     .headerDescription {
         font-size: 18px;
+    }
+
+    .planBoxContainer {
+        flex-direction: row;
     }
 }

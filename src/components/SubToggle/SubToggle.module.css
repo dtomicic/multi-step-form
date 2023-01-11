@@ -13,6 +13,10 @@
   opacity: 0.4;
 }
 
+.heading:hover {
+  cursor: pointer;
+}
+
 .active {
   color: hsl(213, 96%, 18%);
   opacity: 1;
