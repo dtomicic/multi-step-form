@@ -6,8 +6,13 @@
     border-radius: 5px;
 }
 
+.container:hover {
+    cursor: pointer;
+}
+
 .containerLeft {
     width: 20%;
+    max-width: 52px;
 }
 
 .containerRight {
@@ -40,4 +45,22 @@
 .clicked {
     border: 1px solid hsl(213, 96%, 18%);
     background-color: hsla(213, 96%, 18%, 0.01);
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        gap: 30px;
+        padding: 10px 0 10px 15px;
+    }
+
+    .containerLeft {
+        width: 100%;
+        max-width: none;
+    }
+
+    .containerRight {
+        width: 100%;
+    }
 }
