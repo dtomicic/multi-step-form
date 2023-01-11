@@ -1,0 +1,147 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ubuntu';
+}
+
+.coloredBox {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: hsla(206, 94%, 87%, 0.3);
+}
+
+.topSection {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topSectionLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 70%;
+}
+
+.heading {
+    font-size: 14px;
+    margin: 0;
+    color: hsl(213, 96%, 18%);
+}
+
+.subHeading {
+    opacity: 0.4;
+    font-size: 14px;
+    margin: 0;
+    font-weight: 400;
+    text-decoration: underline;
+    transition: ease-in-out .3s;
+}
+
+.subHeading:hover {
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+.topSectionRight {
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
+}
+
+.price {
+    font-size: 14px;
+    color: hsl(213, 96%, 18%);
+    margin: 0;
+}
+
+.line {
+    width: 100%;
+    background-color: hsl(213, 96%, 18%);
+    opacity: 0.2;
+    margin: 30px 0 15px 0;
+}
+
+.bottomSection {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkoutItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.checkoutItemName {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.4;
+    font-weight: 400;
+}
+
+.checkoutItemPrice {
+    margin: 0;
+    font-size: 14px;
+    color: hsl(213, 96%, 18%);
+    font-weight: 400;
+}
+
+.checkoutTotal {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.checkoutTotalText {
+    font-size: 14px;
+    opacity: 0.4;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+.checkoutTotalPrice {
+    font-size: 18px;
+    color: hsl(243, 100%, 62%);
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+@media screen and (min-width: 1024px) {
+    .heading {
+        font-size: 20px;
+    }
+
+    .subHeading {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    .checkoutItemName {
+        font-size: 16px;
+    }
+
+    .checkoutItemPrice {
+        font-size: 16px;
+    }
+
+    .checkoutTotalText {
+        font-size: 16px;
+    }
+
+    .checkoutTotalPrice {
+        font-size: 22px;
+    }
+}

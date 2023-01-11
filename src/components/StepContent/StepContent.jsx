@@ -2,13 +2,30 @@ import Form from "../Form/Form";
 import Navigation from "../Navigation/Navigation";
 import PlanBox from "../PlanBox/PlanBox";
 import styles from "./StepContent.module.css";
-import data from "../../data/data.json";
 import SubToggle from "../SubToggle/SubToggle";
 import React from "react";
+import Addons from "../Addons/Addons";
+import Checkout from "../Checkout/Checkout";
 
 const StepContent = ({ step, setStep }) => {
   const [active, setActive] = React.useState("Monthly");
+  const [addonArray, setAddonArray] = React.useState([{}]);
   const content = ["Monthly", "Yearly"];
+  const [checkedPlan, setCheckedPlan] = React.useState("Arcade");
+  const [planPrice, setPlanPrice] = React.useState(9);
+
+  const handleCheckPlan = (x, y) => {
+    setCheckedPlan(x);
+    setPlanPrice(y);
+  };
+
+  const handleAdd = (x, y) => {
+    if (addonArray.filter((e) => e.name === x).length > 0) {
+      setAddonArray(addonArray.filter((item) => item.name !== x));
+    } else {
+      setAddonArray([...addonArray, { name: x, price: y }]);
+    }
+  };
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -47,9 +64,38 @@ const StepContent = ({ step, setStep }) => {
       ) : step === 2 ? (
         <>
           <div className={styles.planBoxContainer}>
-            <PlanBox active={active} />
+            <PlanBox
+              active={active}
+              handleCheckPlan={handleCheckPlan}
+              checkedPlan={checkedPlan}
+            />
           </div>
-          <SubToggle setActive={setActive} content={content} active={active} />
+          <SubToggle
+            setActive={setActive}
+            content={content}
+            active={active}
+            setAddonArray={setAddonArray}
+          />
+        </>
+      ) : step === 3 ? (
+        <>
+          <div className={styles.addonsContainer}>
+            <Addons
+              active={active}
+              addonArray={addonArray}
+              handleAdd={handleAdd}
+            />
+          </div>
+        </>
+      ) : step === 4 ? (
+        <>
+          <Checkout
+            setStep={setStep}
+            active={active}
+            addonArray={addonArray}
+            checkedPlan={checkedPlan}
+            planPrice={planPrice}
+          />
         </>
       ) : null}
       <Navigation step={step} setStep={setStep} />

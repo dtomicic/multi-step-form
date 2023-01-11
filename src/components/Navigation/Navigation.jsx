@@ -30,7 +30,7 @@ const Navigation = ({ step, setStep }) => {
           Next step
         </button>
       ) : (
-        <button className={styles.nextButton}>Submit</button>
+        <button className={styles.nextButton}>Confirm</button>
       )}
     </div>
   );
