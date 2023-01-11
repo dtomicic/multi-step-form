@@ -2,18 +2,25 @@ import styles from "./PlanBox.module.css";
 import data from "../../data/data.json";
 import React from "react";
 
-const PlanBox = (props) => {
-    const [checked, setChecked] = React.useState('Arcade');
+const PlanBox = ({ active, handleCheckPlan, checkedPlan }) => {
   return (
     <>
       {data.plans.map((plan) => (
-        <div className={checked === plan.name ? `${styles['container']} ${styles['clicked']}` : `${styles['container']}`} onClick={() => setChecked(plan.name)}>
+        <div
+          className={
+            checkedPlan === plan.name
+              ? `${styles["container"]} ${styles["clicked"]}`
+              : `${styles["container"]}`
+          }
+          onClick={active === "Monthly" ? () => handleCheckPlan(plan.name, plan.monthPrice) : () => handleCheckPlan(plan.name, plan.yearPrice)}
+          key={plan.name}
+        >
           <div className={styles.containerLeft}>
             <img src={plan.image} />
           </div>
           <div className={styles.containerRight}>
             <h1 className={styles.heading}>{plan.name}</h1>
-            {props.active === "Monthly" ? (
+            {active === "Monthly" ? (
               <h3 className={styles.subHeading}>${plan.monthPrice}/mo</h3>
             ) : (
               <>
