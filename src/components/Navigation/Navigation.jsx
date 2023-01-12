@@ -1,8 +1,8 @@
 import styles from "./Navigation.module.css";
 
-const Navigation = ({ step, setStep }) => {
+const Navigation = ({ step, setStep, setCheckoutEnd }) => {
   const nextPage = () => {
-    if (step < 4) {
+    if (step < 5) {
       setStep(step + 1);
     }
   };
@@ -30,7 +30,7 @@ const Navigation = ({ step, setStep }) => {
           Next step
         </button>
       ) : (
-        <button className={styles.nextButton}>Confirm</button>
+        <button className={styles.nextButton} onClick={() => setCheckoutEnd(true)}>Confirm</button>
       )}
     </div>
   );

@@ -6,6 +6,7 @@ import SubToggle from "../SubToggle/SubToggle";
 import React from "react";
 import Addons from "../Addons/Addons";
 import Checkout from "../Checkout/Checkout";
+import Success from "../Success/Success";
 
 const StepContent = ({ step, setStep }) => {
   const [active, setActive] = React.useState("Monthly");
@@ -13,6 +14,7 @@ const StepContent = ({ step, setStep }) => {
   const content = ["Monthly", "Yearly"];
   const [checkedPlan, setCheckedPlan] = React.useState("Arcade");
   const [planPrice, setPlanPrice] = React.useState(9);
+  const [checkoutEnd, setCheckoutEnd] = React.useState(false);
 
   const handleCheckPlan = (x, y) => {
     setCheckedPlan(x);
@@ -28,7 +30,9 @@ const StepContent = ({ step, setStep }) => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      {checkoutEnd === false ? (
+        <>
+              <div className={styles.header}>
         {step === 1 ? (
           <>
             <h1 className={styles.headerHeading}>Personal info</h1>
@@ -98,7 +102,14 @@ const StepContent = ({ step, setStep }) => {
           />
         </>
       ) : null}
-      <Navigation step={step} setStep={setStep} />
+      <Navigation step={step} setStep={setStep} setCheckoutEnd={setCheckoutEnd} />
+        </>
+      ) : (
+        <>
+          <Success />
+        </>
+      )}
+
     </div>
   );
 };
