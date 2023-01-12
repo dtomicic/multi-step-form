@@ -2,7 +2,6 @@ import styles from "./Addons.module.css";
 import data from "../../data/data.json";
 
 const Addons = ({ active, addonArray, handleAdd }) => {
-    console.log(addonArray)
   return (
     <>
       {data.addons.map((addon) => {

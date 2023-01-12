@@ -1,23 +1,23 @@
 import React from "react";
 import styles from "./Checkout.module.css";
+import { useState, useEffect } from "react";
 
 const Checkout = ({ setStep, active, addonArray, checkedPlan, planPrice }) => {
-  const [total, setTotal] = React.useState(planPrice);
+  const [total, setTotal] = useState(0);
   const handleClick = () => {
     setStep(2);
   };
+  const totalCalc = () => {
+    if (addonArray.length >= 2) {
+      const mappedArray = addonArray.slice(1).map((addon) => addon.price);
+      const result = mappedArray.reduce((sum, num) => sum + num);
+      setTotal(result + planPrice);
+    }
+  };
 
-  if (addonArray.length === 1) {
-    setTotal(planPrice);
-  } else {
-    const mappedArray = addonArray.slice(1).map((addon) => addon.price);
-    const result = mappedArray.reduce((sum, num) => sum + num);
-    setTotal(result + planPrice);
-  }
-
-  // const mappedArray = addonArray.slice(1).map((addon) => addon.price);
-  // const result = mappedArray.reduce((sum, num) => sum + num);
-  // setTotal(result + planPrice);
+  useEffect(() => {
+    totalCalc();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -37,26 +37,31 @@ const Checkout = ({ setStep, active, addonArray, checkedPlan, planPrice }) => {
             </h1>
           </div>
         </div>
-        <hr className={styles.line}></hr>
-        <div className={styles.bottomSection}>
-          {addonArray.slice(1).map((addon) => {
-            return (
-              <div className={styles.checkoutItem}>
-                <h2 className={styles.checkoutItemName}>{addon.name}</h2>
-                <h2 className={styles.checkoutItemPrice}>
-                  +${addon.price}/{active === "Monthly" ? "mo" : "yr"}
-                </h2>
-              </div>
-            );
-          })}
-        </div>
+        {addonArray.length >= 2 && (
+          <>
+            <hr className={styles.line}></hr>
+            <div className={styles.bottomSection}>
+              {addonArray.slice(1).map((addon) => {
+                return (
+                  <div className={styles.checkoutItem}>
+                    <h2 className={styles.checkoutItemName}>{addon.name}</h2>
+                    <h2 className={styles.checkoutItemPrice}>
+                      +${addon.price}/{active === "Monthly" ? "mo" : "yr"}
+                    </h2>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
       <div className={styles.checkoutTotal}>
         <h2 className={styles.checkoutTotalText}>
           Total (per {active === "Monthly" ? "month" : "year"})
         </h2>
         <h2 className={styles.checkoutTotalPrice}>
-          +${total}/{active === "Monthly" ? "mo" : "yr"}
+          +${addonArray.length >= 2 ? total : planPrice}/
+          {active === "Monthly" ? "mo" : "yr"}
         </h2>
       </div>
     </div>
